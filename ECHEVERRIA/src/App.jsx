@@ -1,10 +1,22 @@
 import { useState, useRef } from "react";
+import Imagen1 from "./imagen1/Imagen1";
+import Imagen2 from "./imagen2/Imagen2";
 import "./App.css";
+import Imagen3 from "./imagen3/Imagen3";
+import Imagen4 from "./imagen4/Imagen4";
+import Imagen5 from "./imagen5/Imagen5";
 
-const NAMES = ["Proyecto 1", "Proyecto 2", "Proyecto 3", "Proyecto 4"];
+const SLIDES = [
+  { name: "La Rejilla de Hermann", Component: Imagen3 },
+  { name: "La Ilusión de la Censura", Component: Imagen4 },
+  { name: "Convivencia y Ciudadanía Digital", Component: Imagen5 },
+  { name: "Ilusión Óptica", Component: Imagen1 },
+  { name: "Ilusión de Movimiento", Component: Imagen2 },
+  
+];
+
 
 export default function App() {
-  const [imgs, setImgs] = useState([null, null, null, null]);
   const [i, setI] = useState(0);
   const track = useRef(null);
 
@@ -19,55 +31,29 @@ export default function App() {
     }
   };
 
-  const load = (n, file) => {
-    if (!file) return;
-    const reader = new FileReader();
-    reader.onload = () =>
-      setImgs((prev) => prev.map((x, k) => (k === n ? reader.result : x)));
-    reader.readAsDataURL(file);
-  };
-
   return (
     <>
       <header>
         <h1>Mis proyectos</h1>
-        <span>{i + 1} de 4</span>
+        <span>{i + 1} de {SLIDES.length}</span>
       </header>
 
       <div className="track" ref={track} onScroll={onScroll}>
-        {NAMES.map((name, n) => (
+        {SLIDES.map((slide, n) => (
           <section className="slide" key={n}>
             <div className="frame">
-              {imgs[n] ? (
-                <img src={imgs[n]} alt={name} />
-              ) : (
-                <div className="empty">
-                  <b>{name}</b>
-                  Todavía no hay imagen. Tocá el botón para agregar una.
-                </div>
-              )}
-            </div>
-            <div className="meta">
-              <strong>{name}</strong>
-              <label className="btn">
-                {imgs[n] ? "Cambiar imagen" : "Agregar imagen"}
-                <input
-                  type="file"
-                  accept="image/*"
-                  onChange={(e) => load(n, e.target.files[0])}
-                />
-              </label>
+              <slide.Component />
             </div>
           </section>
         ))}
       </div>
 
       <div className="dots">
-        {NAMES.map((name, n) => (
+        {SLIDES.map((slide, n) => (
           <button
             key={n}
             className={"dot" + (n === i ? " on" : "")}
-            aria-label={"Ir a " + name}
+            aria-label={"Ir a " + slide.name}
             onClick={() => goTo(n)}
           />
         ))}
