@@ -5,6 +5,7 @@ import "./App.css";
 import Imagen3 from "./imagen3/Imagen3";
 import Imagen4 from "./imagen4/Imagen4";
 import Imagen5 from "./imagen5/Imagen5";
+import logo from "./assets/logo.png";
 
 const SLIDES = [
   { name: "La Rejilla de Hermann", Component: Imagen3 },
@@ -34,7 +35,8 @@ export default function App() {
   return (
     <>
       <header>
-        <h1>Mis proyectos</h1>
+        <img src={logo} alt="Logo" className="header-logo" />
+        <h1>Feria Institucional -Esteban Echeverría</h1>
         <span>{i + 1} de {SLIDES.length}</span>
       </header>
 

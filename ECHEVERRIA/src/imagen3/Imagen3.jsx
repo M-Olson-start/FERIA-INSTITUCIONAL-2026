@@ -7,10 +7,6 @@ export default function Imagen3() {
     <div className="container">
       <div className="card">
         <h2>1. La Rejilla de Hermann</h2>
-        <p>
-          Mirá fijamente las intersecciones blancas de la cuadrícula de
-          abajo. ¿Ves puntos grises que aparecen y desaparecen?
-        </p>
 
         <div className="hermann-wrapper">
           {Array.from({ length: 36 }).map((_, n) => (
@@ -18,6 +14,10 @@ export default function Imagen3() {
           ))}
         </div>
 
+        <p>
+          Mirá fijamente las intersecciones blancas de la cuadrícula. ¿Ves
+          puntos grises que aparecen y desaparecen?
+        </p>
         <p>
           <strong>Explicación:</strong> Esos puntos grises no existen en la
           pantalla. Tu cerebro los inventa debido a un fenómeno llamado
