@@ -6,6 +6,7 @@ import Imagen3 from "./imagen3/Imagen3";
 import Imagen4 from "./imagen4/Imagen4";
 import Imagen5 from "./imagen5/Imagen5";
 import logo from "./assets/logo.png";
+import Imagen6 from "./imagen6/Imagen6";
 
 const SLIDES = [
   { name: "La Rejilla de Hermann", Component: Imagen3 },
@@ -13,6 +14,7 @@ const SLIDES = [
   { name: "Convivencia y Ciudadanía Digital", Component: Imagen5 },
   { name: "Ilusión Óptica", Component: Imagen1 },
   { name: "Ilusión de Movimiento", Component: Imagen2 },
+   { name: "Contraste y Sombra", Component: Imagen6 },
   
 ];
 
